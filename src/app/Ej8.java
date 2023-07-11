@@ -119,22 +119,54 @@ public class Ej8 extends JFrame {
 	}
 
 	protected void convertir() {
-		Double convertir=Double.parseDouble(textFieldcantidad.getText());
-		if (rtbndol1.isSelected()) {
-			if (rtbnDol2.isSelected()) {
-				resultado=convertir*1;
-				this.lblResultado.setText(String.format("2.% $", resultado));
-			if (rtbnEur2.isSelected()) {
-				resultado=convertir*1.11;
-				this.lblResultado.setText(String.format("2.% €", resultado));
-			if (rtbnYen2.isSelected()) {
-				resultado=convertir*155.88;
-				this.lblResultado.setText(String.format("2.% JYP", resultado));
-			}
-			}
-				
-			}
+		double calcular=Double.parseDouble(textFieldcantidad.getText());
+		double resultado=0;
+		if(rtbndol1.isSelected()) {
+		if ( rtbneur1.isSelected()) {
+		resultado=calcular*0.91;
+		lblResultado.setText(String.format("%.2f €", resultado));
+		}else if(rtbnYen1.isSelected()) {
+		resultado=calcular*142.32;
+		lblResultado.setText(String.format("%.2f JPY", resultado));
+		} else {
+		resultado=calcular;
+		lblResultado.setText(String.format("%.2f $", resultado));
+
+		}
+
+		}
+
+		else if (rtbneur1.isSelected()) {
+		if(rtbnDol2.isSelected()) {
+		resultado=calcular*1.1;
+		lblResultado.setText(String.format("%.2f $", resultado));
+		} else if (rtbnYen2.isSelected()) {
+		resultado=calcular*155.88;
+
+		lblResultado.setText(String.format("%.2f JPY", resultado));
+		}else {
+		resultado=calcular;
+
+		lblResultado.setText(String.format("%.2f €", resultado));
 		}
 	}
 
+		else if (rtbnYen1.isSelected()) {
+		if(rtbnDol2.isSelected()) {
+		resultado=calcular*0.007;
+		lblResultado.setText(String.format("%.2f $", resultado));
+
+		} else if (rtbnEur2.isSelected()) {
+		resultado=calcular*0.0064;
+		lblResultado.setText(String.format("%.2f €", resultado));
+
+		}else {
+		resultado=calcular;
+		lblResultado.setText(String.format("%.2f JPY", resultado));
+
+			}
+
+		}
+	}
 }
+
